@@ -1,0 +1,46 @@
+{
+    "controls": {
+        "menu": {
+
+        },
+        "nut_race_lobby": {
+            "K_ESCAPE" : "pause"
+        },
+        "nut_race_match_single" : {
+            "K_LEFT" : "left",
+            "K_RIGHT" : "right",
+            "K_SPACE" : "jump",
+            "K_c" : "kick",
+            "K_ESCAPE" : "pause"
+        },
+        "nut_race_match_team" : {
+            "K_LEFT" : "left",
+            "K_RIGHT" : "right",
+            "K_SPACE" : "jump",
+            "K_c" : "kick",
+            "K_ESCAPE" : "pause",
+            "K_x" : "help"
+        },
+        "nut_race_offline" : {
+            "K_LEFT" : "left",
+            "K_RIGHT" : "right",
+            "K_SPACE" : "jump",
+            "K_ESCAPE" : "pause"
+        },
+        "final" : {
+            
+        }
+    }, 
+    "current_language": "fr_FR",
+    "fullscreen": 0,
+    "volumes": {
+        "main": 1,
+        "music": 1,
+        "sounds": {
+            "speeches": 1,
+            "effects" : 1,
+            "creatures" : 1
+        }
+    },
+    "antialias": 1
+}

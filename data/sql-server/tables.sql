@@ -1,0 +1,4 @@
+CREATE TABLE player(
+    player_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+);
