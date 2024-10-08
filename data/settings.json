@@ -1,10 +1,8 @@
 {
     "controls": {
-        "menu": {
-
-        },
+        "connect" : {},
+        "menu": {},
         "create_game" : {},
-        
         "lobby": {
             "K_ESCAPE" : "pause"
         },
@@ -32,7 +30,7 @@
         "final" : {
 
         }
-    }, 
+    },
     "current_language": "fr_FR",
     "fullscreen": 0,
     "volumes": {
