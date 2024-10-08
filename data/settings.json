@@ -44,5 +44,6 @@
             "creatures" : 1
         }
     },
-    "antialias": 1
+    "antialias": 1,
+    "sensibility" : 1
 }

@@ -2,7 +2,7 @@ import math
 
 import pygaming
 import pygame
-from .common.constants import MENU, CREATE_GAME, LOBBY, HIGHSCORES, STORE
+from common.constants import MENU, CREATE_GAME, LOBBY, HIGHSCORES, STORE
 
 
 Y_POINTER = 300
@@ -10,6 +10,9 @@ POINTER_AMPLITUDE = 100
 Y_LABEL = 150
 X_POINTER = [170, 395, 620, 791, 890, 1015]
 NEXT_PHASES = [CREATE_GAME, CREATE_GAME, LOBBY, HIGHSCORES, STORE, pygaming.NO_NEXT]
+BUILDINGS_POSITIONS = [
+    (115, 250), (290, 500), (560, 690), (740, 825), (826, 960), (980, 1070)
+]
 
 
 class Selector(pygaming.Actor):
@@ -60,22 +63,36 @@ class MenuGamePhase(pygaming.GamePhase):
     def start(self):
         pass
 
+    def update_pointer(self):
+        for label in self.labels:
+            label.hide()
+        self.labels[self.pointer_position].show()
+        self.pointer.time = 0
+        self.pointer.move(X_POINTER[self.pointer_position], Y_POINTER)
+
     def update(self, loop_duration: int):
 
         actions = self.keyboard.get_actions_down()
         if actions['right'] and self.pointer_position <= 4:
-            self.labels[self.pointer_position].hide()
+            # The player use the arrows to navigate through the menu
             self.pointer_position += 1
-            self.pointer.move(X_POINTER[self.pointer_position], Y_POINTER)
-            self.pointer.time = 0
-            self.labels[self.pointer_position].show()
-        
+            self.update_pointer()
+
         if actions['left'] and self.pointer_position > 0:
-            self.labels[self.pointer_position].hide()
+            # The player use the arrows to navigate through the menu
             self.pointer_position -= 1
-            self.pointer.move(X_POINTER[self.pointer_position], Y_POINTER)
-            self.pointer.time = 0
-            self.labels[self.pointer_position].show()
+            self.update_pointer()
+        
+        mouse_x, _ = self.mouse.get_position()
+        if self.mouse.get_velocity()[0] != 0:
+            for i,pos in enumerate(BUILDINGS_POSITIONS):
+                if pos[0] <= mouse_x <= pos[1] and self.pointer_position != i:
+                    self.pointer_position = i
+                    self.update_pointer()
+
+
+
+
         
         if actions['return']:
             self.next_phase = NEXT_PHASES[self.pointer_position]
