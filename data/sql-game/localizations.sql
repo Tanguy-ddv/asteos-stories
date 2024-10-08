@@ -13,7 +13,9 @@ INSERT INTO localizations (position, phase_name, language_code, text_value) VALU
 ('LOC_MENU_QUIT', 'menu', 'en_US', 'Quit'),
 ('LOC_MENU_QUIT', 'menu', 'fr_FR', 'Quitter'),
 ('LOC_MENU_HIGHSCORES', 'menu', 'en_US', 'Highscores'),
-('LOC_MENU_HIGHSCORES', 'menu', 'fr_FR', 'Meilleurs scores')
+('LOC_MENU_HIGHSCORES', 'menu', 'fr_FR', 'Meilleurs scores'),
+('LOC_MENU_STORE', 'menu', 'en_US', 'Store'),
+('LOC_MENU_STORE', 'menu', 'fr_FR', 'Boutique'),
 
 -- Mini game names
 ('LOC_NUT_RACE', 'menu', 'en_US', 'Nut race'),

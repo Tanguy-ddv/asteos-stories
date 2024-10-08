@@ -17,5 +17,5 @@ CREATE TABLE speeches (
 CREATE TABLE player(
     player_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    last_connection DATE NOT NULL,
-);
+    last_connection DATE NOT NULL
+)
