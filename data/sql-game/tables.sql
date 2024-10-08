@@ -17,6 +17,37 @@ CREATE TABLE speeches (
 CREATE TABLE player(
     player_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    last_connexion DATE NOT NULL,
+    last_connexion INTEGER NOT NULL,
     money INTEGER NOT NULL DEFAULT 200
+);
+
+CREATE TABLE characters(
+    character_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    path TEXT NOT NULL,
+    weight INTEGER NOT NULL,
+    speed INTEGER NOT NULL,
+    jump INTEGER NOT NULL,
+    mana INTEGER NOT NULL,
+    strength INTEGER NOT NULL
+);
+
+CREATE TABLE purchases(
+    purchase_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    player_id INTEGER NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player(player_id),
+    character_id INTEGER NOT NULL,
+    FOREIGN KEY (character_id) REFERENCES character(character_id),
+    time INTEGER NOT NULL,
+    price INTEGER NOT NULL
+);
+
+CREATE TABLE nut_race_results(
+    result_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    player_id INTEGER NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player(player_id),
+    score INTEGER NOT NULL,
+    character_id INTEGER NOT NULL,
+    FOREIGN KEY (character_id) REFERENCES character(character_id),
+    time INTEGER NOT NULL,
 )
