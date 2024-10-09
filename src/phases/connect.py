@@ -15,6 +15,8 @@ class ConnectFrame(pygaming.Frame):
         )
 
         existing_players = self.master.database.execute_select_query("SELECT player_id, name, money, last_connexion FROM player")[0]
+        if existing_players is None:
+            existing_players = []
         self.players: list[MenuPlayer] = sorted([MenuPlayer(*player) for player in existing_players], key=lambda player: player.last_connexion, reverse=True)
         font = pygaming.FontFile("Super Unicorn.ttf").get(30, (0, 0, 0, 255), self.master.settings)
         # Log in part
@@ -57,7 +59,7 @@ class ConnectFrame(pygaming.Frame):
         self.labels[player_index].show()
 
 
-class Connect(pygaming.GamePhase):
+class ConnectGamePhase(pygaming.GamePhase):
     
     def __init__(self, game: pygaming.Game) -> None:
         super().__init__("connect", game)
@@ -93,8 +95,8 @@ class Connect(pygaming.GamePhase):
         if player_name:
             
             self.database.execute_insert_query(
-                f"INSERT INTO player (name, money, last_connexion) VALUES ('{player_name}', {150}, {last_connexion})")
-            return {'player' : MenuPlayer(len(self.frame.players), player_name, 150, last_connexion)}
+                f"INSERT INTO player (name, last_connexion) VALUES ('{player_name}', {last_connexion})")
+            return {'player' : MenuPlayer(len(self.frame.players), player_name, 200, last_connexion)}
 
         else:
             player = self.frame.players[self.player_index]

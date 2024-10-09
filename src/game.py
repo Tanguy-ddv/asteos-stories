@@ -1,9 +1,9 @@
 """Use this file to create a game."""
 from pygaming import Game
-from menu import MenuGamePhase
-from connect import Connect
+from phases.menu import MenuGamePhase
+from phases.connect import ConnectGamePhase
 
 gm = Game(first_phase="connect", debug = True)
-Connect(gm)
+ConnectGamePhase(gm)
 MenuGamePhase(gm)
 gm.run()
