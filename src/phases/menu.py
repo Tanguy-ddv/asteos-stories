@@ -51,7 +51,7 @@ class MenuChoiceFrame(pygaming.Frame):
             pygaming.Label(self, pygaming.ColoredRectangle((0, 000, 255, 0), 400, 30), font, 'LOC_CREATE_ONLINE'  , X_POINTER[2], Y_LABEL, pygaming.CENTER, 1),
             pygaming.Label(self, pygaming.ColoredRectangle((255, 255, 0, 0), 400, 30), font, 'LOC_MENU_HIGHSCORES', X_POINTER[3], Y_LABEL, pygaming.CENTER, 1),
             pygaming.Label(self, pygaming.ColoredRectangle((0, 255, 255, 0), 400, 30), font, 'LOC_MENU_STORE'     , X_POINTER[4], Y_LABEL, pygaming.CENTER, 1),
-            pygaming.Label(self, pygaming.ColoredRectangle((255, 0, 255, 0), 400, 30), font, 'LOC_MENU_QUIT'      , X_POINTER[5], Y_LABEL, pygaming.CENTER, 1)
+            pygaming.Label(self, pygaming.ColoredRectangle((255, 0, 255, 0), 400, 30), font, 'LOC_QUIT'      , X_POINTER[5], Y_LABEL, pygaming.CENTER, 1)
         ]
 
         for label in self.labels[1:]:
@@ -77,6 +77,7 @@ class MenuGamePhase(pygaming.GamePhase):
         self.player = player
         self.pointer_index = 0
         self.choice_frame.update_pointer(0)
+        self.next_phase = pygaming.STAY
 
     def update(self, loop_duration: int):
 

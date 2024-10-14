@@ -14,14 +14,14 @@ CREATE TABLE speeches (
     sound_path TEXT NOT NULL
 );
 
-CREATE TABLE player(
+CREATE TABLE player (
     player_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     last_connexion INTEGER NOT NULL,
     money INTEGER NOT NULL DEFAULT 200
 );
 
-CREATE TABLE characters(
+CREATE TABLE character (
     character_id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     path TEXT NOT NULL,
@@ -32,22 +32,32 @@ CREATE TABLE characters(
     strength INTEGER NOT NULL
 );
 
-CREATE TABLE purchases(
+CREATE TABLE purchase (
     purchase_id INTEGER PRIMARY KEY AUTOINCREMENT,
     player_id INTEGER NOT NULL,
-    FOREIGN KEY (player_id) REFERENCES player(player_id),
     character_id INTEGER NOT NULL,
-    FOREIGN KEY (character_id) REFERENCES character(character_id),
     time INTEGER NOT NULL,
-    price INTEGER NOT NULL
+    price INTEGER NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player(player_id),
+    FOREIGN KEY (character_id) REFERENCES character(character_id)
 );
 
-CREATE TABLE nut_race_results(
+CREATE TABLE game_results (
     result_id INTEGER PRIMARY KEY AUTOINCREMENT,
     player_id INTEGER NOT NULL,
-    FOREIGN KEY (player_id) REFERENCES player(player_id),
     score INTEGER NOT NULL,
     character_id INTEGER NOT NULL,
-    FOREIGN KEY (character_id) REFERENCES character(character_id),
     time INTEGER NOT NULL,
+    game TEXT NOT NULL,
+    FOREIGN KEY (player_id) REFERENCES player(player_id),
+    FOREIGN KEY (character_id) REFERENCES character(character_id)
+);
+
+CREATE TABLE highscores (
+    highscore_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    player_name TEXT NOT NULL,
+    game TEXT NOT NULL,
+    score INTEGER NOT NULL,
+    character_id INTEGER NOT NULL,
+    FOREIGN KEY (character_id) REFERENCES character(character_id)
 )
