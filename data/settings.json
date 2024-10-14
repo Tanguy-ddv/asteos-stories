@@ -3,6 +3,7 @@
         "connect" : {},
         "menu": {},
         "create_game" : {},
+        "highscores": {},
         "lobby": {
             "K_ESCAPE" : "pause"
         },
