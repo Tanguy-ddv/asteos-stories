@@ -11,14 +11,12 @@ class CharacterFolder(pygaming.DataFile):
         if kind == MENU:
             std = pygame.image.load(self.full_path + 'standing.png')
             return std, pygame.transform.flip(std, 1, 0), pygame.image.load(self.full_path + 'lobby_head.png')
-            
+
         elif kind == HIGHSCORES:
             return pygame.image.load(self.full_path + 'small_head.png')
     
         else:
-            return {
-
-            }
+            return 
 
 class MenuCharacter:
 
@@ -35,4 +33,3 @@ class MenuCharacter:
         self.locked = bool(database.execute_select_query(
             f"SELECT COUNT(*) FROM purchase WHERE player_id = {player_id} AND character_id = {id_}"
         )[0][0])
-
