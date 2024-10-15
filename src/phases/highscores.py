@@ -4,7 +4,7 @@ from common.constants import HIGHSCORES, MENU
 from player import MenuPlayer
 from character import CharacterFolder
 
-RECORD_HEIGHT = 45
+RECORD_HEIGHT = 55
 
 class RecordFrame(pygaming.Frame):
 
@@ -13,7 +13,7 @@ class RecordFrame(pygaming.Frame):
         pygaming.Frame(
             self,
             pygame.Rect(0, 0, 54, RECORD_HEIGHT),
-            CharacterFolder(record[2]).get(HIGHSCORES)
+            CharacterFolder(record[2]).get(HIGHSCORES),
         )
         pygaming.Label(
             self,
@@ -21,7 +21,7 @@ class RecordFrame(pygaming.Frame):
             font,
             record[0],
             55,
-            RECORD_HEIGHT,
+            RECORD_HEIGHT - 5,
             anchor = pygaming.BOTTOM_LEFT,
             justify=pygaming.BOTTOM_LEFT,
             blinking_period=None if player.name != record[0] else 1000
@@ -32,19 +32,24 @@ class RecordFrame(pygaming.Frame):
             pygaming.ColoredRectangle((0, 0, 0, 0), 100, RECORD_HEIGHT, 2),
             font,
             str(record[1]),
-            300,
-            RECORD_HEIGHT,
+            295,
+            RECORD_HEIGHT - 5,
             anchor=pygaming.BOTTOM_RIGHT,
             justify=pygaming.BOTTOM_RIGHT,
             blinking_period=None if player.name != record[0] else 1000)
+
+GAME_NAME_LOCS = {
+    'nut_race' : 'LOC_NUT_RACE'
+}
+
 
 class GameHighScoresFrame(pygaming.Frame):
 
     def __init__(self, master: pygaming.Frame, window: pygame.Rect, game_name:str, records: list[tuple], font : pygaming.Font, player: MenuPlayer) -> None:
         super().__init__(master, window, pygaming.ColoredRectangle((255, 255, 255, 255), 300, RECORD_HEIGHT*6+5))
-        pygaming.Label(self, pygaming.ColoredRectangle((0, 0, 0, 0), 300, RECORD_HEIGHT), font, game_name, 0, 0)
+        pygaming.Label(self, pygaming.ColoredRectangle((0, 0, 0, 0), 300, RECORD_HEIGHT), font, GAME_NAME_LOCS[game_name], 0, 0)
         for i,record in enumerate(records[:5]):
-            RecordFrame(self, pygame.Rect(0, (i+1)*RECORD_HEIGHT, 300, RECORD_HEIGHT), record, font, player)
+            RecordFrame(self, pygame.Rect(0, (i+1)*RECORD_HEIGHT, 295, RECORD_HEIGHT), record, font, player)
 
 class HighScoresFrame(pygaming.Frame):
 

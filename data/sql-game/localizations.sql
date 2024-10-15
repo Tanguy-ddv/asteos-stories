@@ -20,7 +20,7 @@ INSERT INTO localizations (position, phase_name, language_code, text_value) VALU
 ('LOC_MENU_STORE', 'menu', 'fr_FR', 'Boutique'),
 
 -- Mini game names
-('LOC_NUT_RACE', 'create_game', 'en_US', 'Nut race'),
-('LOC_NUT_RACE', 'create_game', 'fr_FR', 'Course aux noix')
+('LOC_NUT_RACE', 'all', 'en_US', 'Nut race'),
+('LOC_NUT_RACE', 'all', 'fr_FR', 'Course aux noix')
 
 -- Texts for the lobby
