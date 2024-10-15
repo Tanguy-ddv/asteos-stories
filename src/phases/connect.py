@@ -3,6 +3,7 @@ import pygame
 from player import MenuPlayer
 from common.constants import MENU
 import time
+import random
 
 class ConnectFrame(pygaming.Frame):
 
@@ -93,9 +94,18 @@ class ConnectGamePhase(pygaming.GamePhase):
         player_name = self.frame.entry.get()
         last_connexion = int(time.time())
         if player_name:
-            
+
+            player_id = int(time.time()*1000)
             self.database.execute_insert_query(
-                f"INSERT INTO player (name, last_connexion) VALUES ('{player_name}', {last_connexion})")
+                f"INSERT INTO player (player_id, name, last_connexion) VALUES ({player_id}, '{player_name}', {last_connexion})")
+
+            init_chars = random.sample(range(1, 25), k=3)
+            self.database.execute_insert_query(
+                f"""INSERT INTO purchase (player_id, character_id, time, price) VALUES 
+                ({player_id}, {init_chars[0]}, {player_id}, 0),
+                ({player_id}, {init_chars[1]}, {player_id}, 0),
+                ({player_id}, {init_chars[2]}, {player_id}, 0)"""
+            )
             return {'player' : MenuPlayer(len(self.frame.players), player_name, 200, last_connexion)}
 
         else:

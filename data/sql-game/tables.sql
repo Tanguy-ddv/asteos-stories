@@ -15,7 +15,7 @@ CREATE TABLE speeches (
 );
 
 CREATE TABLE player (
-    player_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    player_id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     last_connexion INTEGER NOT NULL,
     money INTEGER NOT NULL DEFAULT 200
