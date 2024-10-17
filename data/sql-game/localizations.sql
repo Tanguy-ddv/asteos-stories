@@ -18,6 +18,12 @@ INSERT INTO localizations (position, phase_name, language_code, text_value) VALU
 ('LOC_MENU_HIGHSCORES', 'menu', 'fr_FR', 'Meilleurs scores'),
 ('LOC_MENU_STORE', 'menu', 'en_US', 'Store'),
 ('LOC_MENU_STORE', 'menu', 'fr_FR', 'Boutique'),
+('LOC_YES', 'all', 'en_US', 'Yes'),
+('LOC_YES', 'all', 'fr_FR', 'Oui'),
+('LOC_NO', 'all', 'en_US', 'No'),
+('LOC_NO', 'all', 'fr_FR', 'Non'),
+('LOC_VALIDATE_PURCHASE', 'highscores', 'en_US', 'Confirm the purchase ?'),
+('LOC_VALIDATE_PURCHASE', 'highscores', 'fr_FR', 'Confirmez l''achat ?'),
 
 -- Mini game names
 ('LOC_NUT_RACE', 'all', 'en_US', 'Nut race'),
