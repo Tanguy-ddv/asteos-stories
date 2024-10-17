@@ -106,7 +106,7 @@ class ConnectGamePhase(pygaming.GamePhase):
                 ({player_id}, {init_chars[1]}, {player_id}, 0),
                 ({player_id}, {init_chars[2]}, {player_id}, 0)"""
             )
-            return {'player' : MenuPlayer(len(self.frame.players), player_name, 200, last_connexion)}
+            return {'player' : MenuPlayer(player_id, player_name, 200, last_connexion)}
 
         else:
             player = self.frame.players[self.player_index]

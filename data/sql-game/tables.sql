@@ -29,7 +29,10 @@ CREATE TABLE character (
     speed INTEGER NOT NULL,
     jump INTEGER NOT NULL,
     mana INTEGER NOT NULL,
-    strength INTEGER NOT NULL
+    strength INTEGER NOT NULL,
+    red INTEGER NOT NULL,
+    green INTEGER NOT NULL,
+    blue INTEGER NOT NULL
 );
 
 CREATE TABLE purchase (

@@ -4,6 +4,7 @@
         "menu": {},
         "create_game" : {},
         "highscores": {},
+        "store" : {},
         "lobby": {
             "K_ESCAPE" : "pause"
         },
